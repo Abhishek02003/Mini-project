@@ -1,19 +1,11 @@
 import React from 'react'
+import Navbar from './Navbar'
 
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Navbar */}
-      <nav className="bg-[#2E3C4E] text-white px-6 py-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold">FoundIt</h1>
-        <ul className="flex gap-6">
-          <li><a href="#" className="hover:text-[#75bae6]">Home</a></li>
-          <li><a href="#" className="hover:text-[#75bae6]">My Items</a></li>
-          <li><a href="#" className="hover:text-[#75bae6]">Report Lost</a></li>
-          <li><a href="#" className="hover:text-[#75bae6]">Report Found</a></li>
-          <li><a href="/" className="hover:text-[#75bae6]">Logout</a></li>
-        </ul>
-      </nav>
+      <Navbar/>
 
       {/* Hero Section */}
       <header className="text-center py-12 bg-white shadow-md">

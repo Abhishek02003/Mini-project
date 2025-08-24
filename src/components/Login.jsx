@@ -26,7 +26,7 @@ const Login = () => {
             className="border rounded-lg px-4 py-2"
           />
           <input
-            type="password"
+            type="password" 
             placeholder="Password"
             className="border rounded-lg px-4 py-2"
           />
