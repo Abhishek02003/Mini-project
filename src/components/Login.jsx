@@ -1,16 +1,43 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [form, setForm] = useState({ email: "", password: "" });
 
-  const handleLogin = (e) => {
+  // Handle input change
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  // Handle login submit
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // 👉 Here you’d normally validate credentials with backend
-    // For now, we just redirect
-    navigate("/HomePage");
+    try {
+      const res = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form), // send { email, password }
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert("✅ " + data.message);
+
+        // Save user info to localStorage (for session)
+        localStorage.setItem("user", JSON.stringify(data.user));
+
+        // Redirect to HomePage
+        navigate("/HomePage");
+      } else {
+        alert("❌ " + data.error);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("⚠️ Error logging in");
+    }
   };
 
   return (
@@ -19,21 +46,28 @@ const Login = () => {
         <h1 className="text-2xl font-bold mb-6">Welcome to FoundIt</h1>
 
         {/* Login Form */}
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4" onSubmit={handleLogin}>
           <input
             type="email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
             placeholder="Email"
             className="border rounded-lg px-4 py-2"
+            required
           />
           <input
-            type="password" 
+            type="password"
+            name="password"
+            value={form.password}
+            onChange={handleChange}
             placeholder="Password"
             className="border rounded-lg px-4 py-2"
+            required
           />
           <button
             type="submit"
-            onClick={handleLogin}
-            className="bg-[#75bae6] hover:bg-[#2E3C4E] text-white rounded-lg px-4 py-2 transition"
+            className="bg-[#75bae6] hover:bg-[#2E3C4E] text-white rounded-lg px-4 py-2 transition font-semibold"
           >
             Login
           </button>
@@ -48,7 +82,7 @@ const Login = () => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

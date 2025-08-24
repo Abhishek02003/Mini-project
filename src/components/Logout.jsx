@@ -7,14 +7,13 @@ const Logout = () => {
   useEffect(() => {
     const confirmLogout = window.confirm("Are you sure you want to logout?");
     if (confirmLogout) {
-      // 👉 Here you can also clear localStorage/session if needed
-      navigate("/"); // redirects to homepage
+      navigate("/");
     } else {
-      navigate(-1); // go back if user cancels
+      navigate(-1);
     }
   }, []);
 
-  return null; // nothing to render, just redirects
+  return null;
 };
 
 export default Logout;
