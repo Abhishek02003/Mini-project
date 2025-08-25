@@ -26,6 +26,8 @@ const Reportfound = () => {
     } catch (err) {
       console.error(err);
     }
+
+    setForm({title:"",description:"",location:""})
   };
 
   return (
@@ -42,14 +44,14 @@ const Reportfound = () => {
                   placeholder="Item Name"
                   className="border rounded-lg px-4 py-2 w-full mb-4"
                   value={form.title}
-                  onChange={handleChange} />
+                  onChange={handleChange} required />
 
               <textarea
                   name="description"
                   placeholder="Description"
                   className="border rounded-lg px-4 py-2 w-full mb-4"
                   value={form.description}
-                  onChange={handleChange} />
+                  onChange={handleChange} required />
 
               <input
                   type="text"
@@ -57,7 +59,7 @@ const Reportfound = () => {
                   placeholder="Found At Location"
                   className="border rounded-lg px-4 py-2 w-full mb-4"
                   value={form.location}
-                  onChange={handleChange} />
+                  onChange={handleChange} required/>
 
               <button
                   type="submit"

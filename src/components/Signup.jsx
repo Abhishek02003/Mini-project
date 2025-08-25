@@ -10,7 +10,6 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
     if (form.password !== form.confirmPassword) {
       alert("Passwords do not match!");
       return;

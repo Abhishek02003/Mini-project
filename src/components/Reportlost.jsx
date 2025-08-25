@@ -12,14 +12,14 @@ const Reportlost = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("mongodb://localhost:27017/report-lost", {
+      const res = await fetch("http://localhost:5000/report-lost", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
       const data = await res.json();
-      if (res.ok) {
+      if (res.ok) { 
         alert("Lost item reported successfully!");
       } else {
         alert("Error: " + data.error);
@@ -27,6 +27,9 @@ const Reportlost = () => {
     } catch (err) {
       console.error(err);
     }
+
+   setForm({ title: "", description: "", location: "" });
+
   };
 
   return (
@@ -43,14 +46,14 @@ const Reportlost = () => {
                   placeholder="Item Name"
                   className="border rounded-lg px-4 py-2 w-full mb-4"
                   value={form.title}
-                  onChange={handleChange} />
+                  onChange={handleChange} required />
 
               <textarea
                   name="description"
                   placeholder="Description"
                   className="border rounded-lg px-4 py-2 w-full mb-4"
                   value={form.description}
-                  onChange={handleChange} />
+                  onChange={handleChange} required/>
 
               <input
                   type="text"
@@ -58,7 +61,7 @@ const Reportlost = () => {
                   placeholder="Last Seen Location"
                   className="border rounded-lg px-4 py-2 w-full mb-4"
                   value={form.location}
-                  onChange={handleChange} />
+                  onChange={handleChange} required />
 
               <button
                   type="submit"
