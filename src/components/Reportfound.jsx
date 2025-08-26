@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 const Reportfound = () => {
-  const [form, setForm] = useState({ title: "", description: "", location: "" });
+  const [form, setForm] = useState({ title: "", description: "", location: "",name:"", phone:"" });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -27,7 +27,7 @@ const Reportfound = () => {
       console.error(err);
     }
 
-    setForm({title:"",description:"",location:""})
+    setForm({title:"",description:"",location:"",name:"", phone:""})
   };
 
   return (
@@ -60,6 +60,26 @@ const Reportfound = () => {
                   className="border rounded-lg px-4 py-2 w-full mb-4"
                   value={form.location}
                   onChange={handleChange} required/>
+
+                   <input
+            type="text"
+            name="name"
+            placeholder="Enter Your Name"
+            className="border rounded-lg px-4 py-2 w-full mb-4"
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Enter Your Contact Details"
+            className="border rounded-lg px-4 py-2 w-full mb-4"
+            value={form.phone}
+            onChange={handleChange}
+            required
+          />
 
               <button
                   type="submit"

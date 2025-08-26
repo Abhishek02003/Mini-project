@@ -1,5 +1,5 @@
 import Button from "./components/Button";
-import Login from "./components/login";
+import Login from "./components/Login";
 import Signup from "./components/Signup";
 import HomePage from "./components/HomePage";
 import Myitems from "./components/Myitems";

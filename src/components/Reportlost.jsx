@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 
 const Reportlost = () => {
-  const [form, setForm] = useState({ title: "", description: "", location: "" });
+  const [form, setForm] = useState({
+    title: "",
+    description: "",
+    location: "",
+    name: "",
+    phone: "",
+  });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -19,7 +25,7 @@ const Reportlost = () => {
       });
 
       const data = await res.json();
-      if (res.ok) { 
+      if (res.ok) {
         alert("Lost item reported successfully!");
       } else {
         alert("Error: " + data.error);
@@ -28,49 +34,77 @@ const Reportlost = () => {
       console.error(err);
     }
 
-   setForm({ title: "", description: "", location: "" });
-
+    setForm({ title: "", description: "", location: "", name: "", phone: "" });
   };
 
   return (
-    <><Navbar /><div className="flex items-center justify-center h-screen bg-gray-100">
-          <form
-              onSubmit={handleSubmit}
-              className="bg-white shadow-lg rounded-xl p-8 w-[400px]"
+    <>
+      <Navbar />
+      <div className="flex items-center justify-center h-screen bg-gray-100">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white shadow-lg rounded-xl p-8 w-[400px]"
+        >
+          <h1 className="text-2xl font-bold mb-6">Report Lost Item</h1>
+
+          <input
+            type="text"
+            name="title"
+            placeholder="Item Name"
+            className="border rounded-lg px-4 py-2 w-full mb-4"
+            value={form.title}
+            onChange={handleChange}
+            required
+          />
+
+          <textarea
+            name="description"
+            placeholder="Description"
+            className="border rounded-lg px-4 py-2 w-full mb-4"
+            value={form.description}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="text"
+            name="location"
+            placeholder="Last Seen Location"
+            className="border rounded-lg px-4 py-2 w-full mb-4"
+            value={form.location}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter Your Name"
+            className="border rounded-lg px-4 py-2 w-full mb-4"
+            value={form.name}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Enter Your Contact Details"
+            className="border rounded-lg px-4 py-2 w-full mb-4"
+            value={form.phone}
+            onChange={handleChange}
+            required
+          />
+
+          <button
+            type="submit"
+            className="bg-red-500 hover:bg-red-700 text-white rounded-lg px-4 py-2 w-full"
           >
-              <h1 className="text-2xl font-bold mb-6">Report Lost Item</h1>
-
-              <input
-                  type="text"
-                  name="title"
-                  placeholder="Item Name"
-                  className="border rounded-lg px-4 py-2 w-full mb-4"
-                  value={form.title}
-                  onChange={handleChange} required />
-
-              <textarea
-                  name="description"
-                  placeholder="Description"
-                  className="border rounded-lg px-4 py-2 w-full mb-4"
-                  value={form.description}
-                  onChange={handleChange} required/>
-
-              <input
-                  type="text"
-                  name="location"
-                  placeholder="Last Seen Location"
-                  className="border rounded-lg px-4 py-2 w-full mb-4"
-                  value={form.location}
-                  onChange={handleChange} required />
-
-              <button
-                  type="submit"
-                  className="bg-red-500 hover:bg-red-700 text-white rounded-lg px-4 py-2 w-full"
-              >
-                  Report Lost
-              </button>
-          </form>
-      </div></>
+            Report Lost
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 
