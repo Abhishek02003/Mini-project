@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Spline from '@splinetool/react-spline';
 import Navbar from "./Navbar";
 const Reportfound = () => {
   const [form, setForm] = useState({ title: "", description: "", location: "",name:"", phone:"" });
@@ -31,10 +32,18 @@ const Reportfound = () => {
   };
 
   return (
-    <><Navbar /><div className="flex items-center justify-center h-screen bg-gray-100">
+    <>
+    <div>
+       <Navbar />
+<div className="relative w-full h-[90vh]">
+         <Spline
+        scene="https://prod.spline.design/hBCPhPRbZwKIiNUw/scene.splinecode"  
+      />
+
+  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <form
               onSubmit={handleSubmit}
-              className="bg-white shadow-lg rounded-xl p-8 w-[400px]"
+      className="bg-white/50 backdrop-blur-md shadow-lg rounded-xl p-8 w-[400px] pointer-events-auto"
           >
               <h1 className="text-2xl font-bold mb-6">Report Found Item</h1>
 
@@ -42,14 +51,14 @@ const Reportfound = () => {
                   type="text"
                   name="title"
                   placeholder="Item Name"
-                  className="border rounded-lg px-4 py-2 w-full mb-4"
+                  className="border rounded-lg px-4 py-2 w-full mb-4 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   value={form.title}
                   onChange={handleChange} required />
 
               <textarea
                   name="description"
                   placeholder="Description"
-                  className="border rounded-lg px-4 py-2 w-full mb-4"
+                  className="border rounded-lg px-4 py-2 w-full mb-4 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   value={form.description}
                   onChange={handleChange} required />
 
@@ -57,7 +66,7 @@ const Reportfound = () => {
                   type="text"
                   name="location"
                   placeholder="Found At Location"
-                  className="border rounded-lg px-4 py-2 w-full mb-4"
+                  className="border rounded-lg px-4 py-2 w-full mb-4 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   value={form.location}
                   onChange={handleChange} required/>
 
@@ -65,7 +74,7 @@ const Reportfound = () => {
             type="text"
             name="name"
             placeholder="Enter Your Name"
-            className="border rounded-lg px-4 py-2 w-full mb-4"
+            className="border rounded-lg px-4 py-2 w-full mb-4 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             value={form.name}
             onChange={handleChange}
             required
@@ -75,7 +84,7 @@ const Reportfound = () => {
             type="tel"
             name="phone"
             placeholder="Enter Your Contact Details"
-            className="border rounded-lg px-4 py-2 w-full mb-4"
+            className="border rounded-lg px-4 py-2 w-full mb-4 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             value={form.phone}
             onChange={handleChange}
             required
@@ -83,12 +92,15 @@ const Reportfound = () => {
 
               <button
                   type="submit"
-                  className="bg-green-500 hover:bg-green-700 text-white rounded-lg px-4 py-2 w-full"
+                  className="bg-green-500 hover:bg-green-700 text-white rounded-lg px-4 py-2 w-full "
               >
                   Report Found
               </button>
           </form>
-      </div></>
+          </div>
+      </div>
+      </div>
+      </>
   );
 };
 
