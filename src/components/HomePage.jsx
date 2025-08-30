@@ -76,7 +76,7 @@ const HomePage = () => {
     <>
       {/* Navbar */}
       <Navbar />
-      <div className="min-h-screen bg-[rgb(248 250 252)] w-[85vw] m-auto">
+      <div className="min-h-screen bg-[rgb(248 250 252)] sm:w-[85vw] m-auto w-full">
         {/* Hero Section */}
         <header className="text-center py-12 bg-white">
           <h2 className="text-5xl font-bold text-[#rgb(15 23 42)] mb-5">

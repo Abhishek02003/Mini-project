@@ -18,16 +18,17 @@ function App() {
               <div className="banner">
                 <div className="title bg-[url(https://www.shutterstock.com/image-vector/landscape-view-university-students-walking-600nw-2177237095.jpg)] h-[100vh] bg-no-repeat w-[100vw] bg-cover bg-center">
                   <div className="flex items-center justify-center h-full bg-white/60 pb-[10vh]">
-                    <div className=" flex flex-col items-center">
+                    <div className=" flex flex-col items-center justify-center md:w-full w-[80vw] ">
                       <div className="flex">
-                        <div className="text-[#5ab0e6] text-4xl font-extrabold font-sans">
-                          FoundIt:
+                        <div className="text-[#5ab0e6]  font-extrabold font-sans text-4xl">
+                          FoundIt
                         </div>
-                        <div className="text-[#2E3C4E] text-4xl font-extrabold font-sans">
+                        <div className="text-[#5ab0e6]  font-extrabold font-sans text-4xl hidden sm:block">:</div>
+                        <div className="text-[#2E3C4E] sm:text-4xl font-extrabold font-sans text-2xl sm:block hidden">
                           Your Campus Lost & Found Hub
                         </div>
                       </div>
-                      <div className="mt-8">
+                      <div className="mt-8 text-sm md:text-lg flex justify-center items-center">
                         Reuniting lost items with their rightful owners, one
                         click at a time.
                       </div>

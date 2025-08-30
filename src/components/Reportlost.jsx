@@ -48,7 +48,7 @@ const Reportlost = () => {
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <form
           onSubmit={handleSubmit}
-          className="bg-white/50 backdrop-blur-md shadow-lg rounded-xl p-8 w-[400px] pointer-events-auto"
+          className="bg-white/50 backdrop-blur-md shadow-lg rounded-xl p-8 w-[400px] pointer-events-auto mx-10"
         >
           <h1 className="text-2xl font-bold mb-6">Report Lost Item</h1>
 

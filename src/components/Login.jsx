@@ -41,12 +41,12 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <div className="p-10 bg-white shadow-xl rounded-xl w-[400px] text-center">
-        <h1 className="text-2xl font-bold mb-6">Welcome to FoundIt</h1>
+    <div className="flex items-center justify-center h-screen bg-gray-100 ">
+      <div className=" bg-white shadow-xl rounded-xl w-[400px] text-center mx-10">
+        <h1 className="text-2xl font-bold mb-6 pt-10">Welcome to FoundIt</h1>
 
         {/* Login Form */}
-        <form className="flex flex-col gap-4" onSubmit={handleLogin}>
+        <form className="flex flex-col gap-4 px-10 pt-5 " onSubmit={handleLogin}>
           <input
             type="email"
             name="email"
@@ -62,19 +62,19 @@ const Login = () => {
             value={form.password}
             onChange={handleChange}
             placeholder="Password"
-            className="border rounded-lg px-4 py-2"
+            className="border rounded-lg px-4 py-2 p-10"
             required
           />
           <button
             type="submit"
-            className="bg-[#75bae6] hover:bg-[#2E3C4E] text-white rounded-lg px-4 py-2 transition font-semibold"
+            className="bg-[#75bae6] hover:bg-[#2E3C4E] text-white rounded-lg px-4 py-2 transition font-semibold p-10"
           >
             Login
           </button>
         </form>
 
         {/* Signup Link */}
-        <p className="mt-4 text-sm">
+        <p className="mt-4 text-sm pt-5 pb-10">
           Don’t have an account?{" "}
           <a href="/signup" className="text-blue-500 underline">
             Sign up here
