@@ -8,6 +8,9 @@ import { FaPhoneAlt } from "react-icons/fa";
 const HomePage = () => {
   const [foundItems, setfoundItems] = useState([]);
   const [lostItems, setlostItems] = useState([]);
+  const user = JSON.parse(localStorage.getItem("user") || "null");
+  const role = user?.role || "user";
+  const isAdmin = role === "admin";
 
   const fetchfounddata = async () => {
     try {
@@ -39,6 +42,7 @@ const HomePage = () => {
     try {
       const res = await fetch(`http://localhost:5000/report-found/${id}`, {
         method: "DELETE",
+        headers: { "x-role": role },
       });
       if (res.ok) {
         alert("Item deleted successfully!");
@@ -58,6 +62,7 @@ const HomePage = () => {
     try {
       const res = await fetch(`http://localhost:5000/report-lost/${id}`, {
         method: "DELETE",
+        headers: { "x-role": role },
       });
       if (res.ok) {
         alert("Item deleted successfully!");
@@ -115,14 +120,16 @@ const HomePage = () => {
                   <h3 className="text-lg font-semibold text-[#rgb(15 23 42)] mb-2">
                     {item.title}
                   </h3>
-                  <button
-                    className=" rounded-2xl px-2 bg-red-600 text-white cursor-pointer"
-                    onClick={() => {
-                      handlefounddelete(item._id);
-                    }}
-                  >
-                    Delete
-                  </button>
+                  {isAdmin && (
+                    <button
+                      className=" rounded-2xl px-2 bg-red-600 text-white cursor-pointer"
+                      onClick={() => {
+                        handlefounddelete(item._id);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  )}
                 </div>
                 <p className="text-black text-md flex items-center gap-1"><MdLocationOn />{item.location}</p>
                 <p className="text-gray-600 text-md flex">
@@ -171,14 +178,16 @@ const HomePage = () => {
                   <h3 className="text-lg font-semibold text-[#rgb(15 23 42)] mb-2">
                     {item.title}
                   </h3>
-                  <button
-                    className=" rounded-2xl px-2 bg-red-600 text-white cursor-pointer"
-                    onClick={() => {
-                      handlelostdelete(item._id);
-                    }}
-                  >
-                    Delete
-                  </button>
+                  {isAdmin && (
+                    <button
+                      className=" rounded-2xl px-2 bg-red-600 text-white cursor-pointer"
+                      onClick={() => {
+                        handlelostdelete(item._id);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  )}
                 </div>{" "}
                 <p className="text-black text-md flex items-center gap-1"><MdLocationOn /> {item.location}</p>
                 <p className="text-gray-600 text-md flex">

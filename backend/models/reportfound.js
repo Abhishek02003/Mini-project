@@ -5,5 +5,7 @@ const founditems = new mongoose.Schema({
     location: String,
  name:String,
  phone:String,
+ userEmail:String,
+ status: { type: String, default: 'pending' },
 });
  export const reportfound= mongoose.model('reportfound',founditems);

@@ -4,6 +4,8 @@ import { Menu, X } from "lucide-react"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const user = JSON.parse(localStorage.getItem("user") || "null")
+  const isAdmin = user?.role === 'admin'
 
   return (
     <div>
@@ -22,16 +24,18 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/Myitems"
-              className={({ isActive }) =>
-                isActive ? "text-[#75bae6] font-semibold" : "hover:text-[#75bae6]"
-              }
-            >
-              My Items
-            </NavLink>
-          </li>
+          {!isAdmin && (
+            <li>
+              <NavLink
+                to="/Myitems"
+                className={({ isActive }) =>
+                  isActive ? "text-[#75bae6] font-semibold" : "hover:text-[#75bae6]"
+                }
+              >
+                My Items
+              </NavLink>
+            </li>
+          )}
           <li>
             <NavLink
               to="/reportlost"
@@ -52,6 +56,18 @@ const Navbar = () => {
               Report Found
             </NavLink>
           </li>
+          {isAdmin && (
+            <li>
+              <NavLink
+                to="/admin"
+                className={({ isActive }) =>
+                  isActive ? "text-[#75bae6] font-semibold" : "hover:text-[#75bae6]"
+                }
+              >
+                Admin
+              </NavLink>
+            </li>
+          )}
           <li>
             <NavLink to="/Logout" className="hover:text-red-600 ml-10">
               Logout
@@ -76,11 +92,13 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
-          <li className="py-2">
-            <NavLink to="/Myitems" onClick={() => setIsOpen(false)}>
-              My Items
-            </NavLink>
-          </li>
+          {!isAdmin && (
+            <li className="py-2">
+              <NavLink to="/Myitems" onClick={() => setIsOpen(false)}>
+                My Items
+              </NavLink>
+            </li>
+          )}
           <li className="py-2">
             <NavLink to="/reportlost" onClick={() => setIsOpen(false)}>
               Report Lost

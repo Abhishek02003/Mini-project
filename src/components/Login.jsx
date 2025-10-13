@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
 
   // Handle input change
   const handleChange = (e) => {
@@ -21,7 +22,13 @@ const Login = () => {
         body: JSON.stringify(form), // send { email, password }
       });
 
-      const data = await res.json();
+      // Handle non-JSON or network failures gracefully
+      let data = { message: "", error: "" };
+      try {
+        data = await res.json();
+      } catch (_) {
+        // no-op: keep default data
+      }
 
       if (res.ok) {
         alert("✅ " + data.message);
@@ -32,11 +39,12 @@ const Login = () => {
         // Redirect to HomePage
         navigate("/HomePage");
       } else {
-        alert("❌ " + data.error);
+        const msg = data?.error || `Request failed (${res.status})`;
+        alert("❌ " + msg);
       }
     } catch (err) {
       console.error(err);
-      alert("⚠️ Error logging in");
+      alert("⚠️ Network error: Unable to reach server");
     }
   };
 
@@ -57,7 +65,7 @@ const Login = () => {
             required
           />
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             name="password"
             value={form.password}
             onChange={handleChange}
@@ -65,6 +73,14 @@ const Login = () => {
             className="border rounded-lg px-4 py-2 p-10"
             required
           />
+          <label className="flex items-center gap-2 text-sm text-gray-600 select-none">
+            <input
+              type="checkbox"
+              checked={showPassword}
+              onChange={() => setShowPassword(!showPassword)}
+            />
+            Show password
+          </label>
           <button
             type="submit"
             className="bg-[#75bae6] hover:bg-[#2E3C4E] text-white rounded-lg px-4 py-2 transition font-semibold p-10"

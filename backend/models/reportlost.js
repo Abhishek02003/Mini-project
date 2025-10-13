@@ -4,6 +4,8 @@ const lostitems = new mongoose.Schema({
     description: String, 
     location: String,
     name: String,
-    phone:String, 
+    phone:String,
+    userEmail: String,
+    status: { type: String, default: 'pending' },
 });
  export const reportlost= mongoose.model('reportlost',lostitems);

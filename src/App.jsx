@@ -6,6 +6,7 @@ import Myitems from "./components/Myitems";
 import Logout from "./components/Logout";
 import Reportfound from "./components/Reportfound";
 import Reportlost from "./components/Reportlost";
+import Admin from "./components/Admin";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
           <Route path="/Reportlost" element={<Reportlost />} />
           <Route path="/Reportfound" element={<Reportfound />} />
           <Route path="/Logout" element={<Logout/>}/>
+          <Route path="/admin" element={<Admin/>} />
 
         </Routes>
       </Router>

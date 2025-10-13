@@ -7,7 +7,9 @@ const Myitems = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const res = await fetch("http://localhost:5000/myitems"); // 👈 backend API
+        const user = JSON.parse(localStorage.getItem("user") || "null");
+        const email = user?.email || "";
+        const res = await fetch(`http://localhost:5000/myitems?email=${encodeURIComponent(email)}`); // 👈 backend API
         const data = await res.json();
         setItems(data);
       } catch (err) {

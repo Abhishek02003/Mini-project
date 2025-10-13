@@ -18,10 +18,13 @@ const Reportfound = () => {
     e.preventDefault();
 
     try {
+      const user = JSON.parse(localStorage.getItem("user") || "null");
+      const userEmail = user?.email || "";
+      const payload = { ...form, userEmail };
       const res = await fetch("http://localhost:5000/report-found", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
 
       const data = await res.json();
