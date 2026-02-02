@@ -12,10 +12,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 mongoose
-  .connect("mongodb://localhost:27017/foundit", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.log("❌ MongoDB Error:", err));
 
