@@ -9,7 +9,7 @@ const Admin = () => {
     try {
       const user = JSON.parse(localStorage.getItem("user") || "null");
       const role = user?.role || "user";
-      const res = await fetch("http://localhost:5000/admin/pending", {
+      const res = await fetch("https://mini-project-backend-3g5a.onrender.com/admin/pending", {
         headers: { "x-role": role }
       });
       const data = await res.json();
@@ -29,7 +29,7 @@ const Admin = () => {
     try {
       const user = JSON.parse(localStorage.getItem("user") || "null");
       const role = user?.role || "user";
-      const res = await fetch("http://localhost:5000/admin/approve", {
+      const res = await fetch("https://mini-project-backend-3g5a.onrender.com/admin/approve", {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-role": role },
         body: JSON.stringify({ id, type })
@@ -46,7 +46,7 @@ const Admin = () => {
     try {
       const user = JSON.parse(localStorage.getItem("user") || "null");
       const role = user?.role || "user";
-      const res = await fetch("http://localhost:5000/admin/delete", {
+      const res = await fetch("https://mini-project-backend-3g5a.onrender.com/admin/delete", {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-role": role },
         body: JSON.stringify({ id, type })
