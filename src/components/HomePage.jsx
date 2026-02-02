@@ -14,7 +14,7 @@ const HomePage = () => {
 
   const fetchfounddata = async () => {
     try {
-      const res = await fetch("http://localhost:5000/report-found");
+      const res = await fetch("https://mini-project-backend-3g5a.onrender.com/report-found");
       const data = await res.json();
       setfoundItems(data);
     } catch (err) {
@@ -27,7 +27,7 @@ const HomePage = () => {
 
   const fetchlostdata = async () => {
     try {
-      const res = await fetch("http://localhost:5000/report-lost");
+      const res = await fetch("https://mini-project-backend-3g5a.onrender.com/report-lost");
       const data = await res.json();
       setlostItems(data);
     } catch (err) {
@@ -40,7 +40,7 @@ const HomePage = () => {
 
   const handlefounddelete = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/report-found/${id}`, {
+      const res = await fetch(`https://mini-project-backend-3g5a.onrender.com/report-found/${id}`, {
         method: "DELETE",
         headers: { "x-role": role },
       });
@@ -60,7 +60,7 @@ const HomePage = () => {
 
   const handlelostdelete = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/report-lost/${id}`, {
+      const res = await fetch(`https://mini-project-backend-3g5a.onrender.com/report-lost/${id}`, {
         method: "DELETE",
         headers: { "x-role": role },
       });

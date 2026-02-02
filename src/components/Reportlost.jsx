@@ -22,7 +22,7 @@ const Reportlost = () => {
       const user = JSON.parse(localStorage.getItem("user") || "null");
       const userEmail = user?.email || "";
       const payload = { ...form, userEmail };
-      const res = await fetch("http://localhost:5000/report-lost", {
+      const res = await fetch("https://mini-project-backend-3g5a.onrender.com/report-lost", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

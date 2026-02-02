@@ -9,7 +9,7 @@ const Myitems = () => {
       try {
         const user = JSON.parse(localStorage.getItem("user") || "null");
         const email = user?.email || "";
-        const res = await fetch(`http://localhost:5000/myitems?email=${encodeURIComponent(email)}`); // 👈 backend API
+        const res = await fetch(`https://mini-project-backend-3g5a.onrender.com/myitems?email=${encodeURIComponent(email)}`); // 👈 backend API
         const data = await res.json();
         setItems(data);
       } catch (err) {
